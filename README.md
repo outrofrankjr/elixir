@@ -118,7 +118,7 @@ iex> newLista ++ lista #concatenando as duas listas
 [1,2,3,4,1,2,3]
 ```
 
-#### 6 Lazy Evaluation
+#### Lazy Evaluation
 
 
 ### 2.2 Tuplas
@@ -233,8 +233,24 @@ iex> value
 "Successful!"
 iex> {:ok, value} = {:error}
 ** (MatchError) no match of right hand side value: {:error}
+
+# Situação-problema
+iex> {:moto, modelo} = {:moto, "Suzuky"}
+{:moto, "Suzuky"}
+iex> modelo
+"Suzuky"
+iex> {:moto, modelo} = {:carro, "Suzuky"}
+** (MatchError) no match of right hand side value: {:carro, "Suzuky"}
 ```
 
+E podemos  fazer match  pulando  valores  que  não nos interessam. Vamos supor que queremos pegar sempre o segundo ou terceiro  valor,  não importando  quais  sejam  o  primeiro  ou  o segundo. Para isso, podemos usar um simples `_`(underscore).
+
+```elixir
+iex> {_, numero} = {"bla bla bla", 404}
+{"bla bla bla", 404}
+iex> numero
+404
+```
 
 
 ## 3 Funções
@@ -308,10 +324,15 @@ Mais importante, você pode associar estruturas contra mapas:
 iex> %{name: "Sean"} = sean
 %Example.User{name: "Sean", roles: [:admin, :owner]}
 ```
+## 6 Operador pipe
+
+## 7Composição
+ * alias
+ * import
+ * require
+ * use
+
+## 8 Recursividade
 
 
-
-## 7 Recursividade
-
-
-## 8 Mix
+## 9 Mix
