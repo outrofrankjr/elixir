@@ -32,7 +32,7 @@ Para iniciar, executamos `iex`:
 Aridade em linguagem funcionais corresponde ao número de argumentos que uma determinada função recebe.
 No próprio terminal, voce pode consultar o `IEx.Helpers` (O módulo interativo de ajuda com o Elixir) que oferece auxílios durante o desenvolvimento e torna o terminal do Elixir mais prazeroso para o trabalho :smile:
 
-Então, após execultar o comando `iex` digite um simples `h`:
+Então, após execultar o comando `iex` digite um simples `h` que o IEX.Helpers explica:
 
 * `b/1           - prints callbacks info and docs for a given module`
 * `c/1           - compiles a file into the current directory`
@@ -65,27 +65,26 @@ Então, após execultar o comando `iex` digite um simples `h`:
 
 Listas  são  um  tipo  de  coleção  de  elementos  e  podem conter diversos outros tipos dentro dela. Uma lista pode conter valores númericos, Strings e booleans, por exemplo.
 
-Listas  não  devem  ser  comparadas  com  arrays  de  outras linguagens,  porque  não  o  são.  Na  verdade,  o  conceito  aqui  é  que listas podem ter head (cabeça) e tail (cauda). A cabeça contém o  valor  e  a  cauda  por  si  mesma  é  a  lista  inteira.  Por  causa  dessa implementação, elas podem ser percorridas facilmente.
-
-Elas  também  são  imutáveis,  ou  seja,  podem  ser  criadas,  mas nunca alteradas. Então, você nunca terá uma cópia de uma lista ao remover  ou  adicionar  elementos.  O  que  você  terá,  na verdade,  é uma nova lista.
+Listas em Elixir, jamais podem ser comparadas  com  arrays  de Java ou PHP,  porque  não  os conceitos não são iguais. O conceito  aqui  é  que listas podem ter `head` (cabeça) e `tail` (cauda). A cabeça contém o  valor  e  a  cauda  por  si  mesma  é  a  lista  inteira.  Por  causa  dessa implementação, elas podem ser percorridas facilmente.
 
 ```elixir
-iex> [3.14, :pie, "Apple"]
-[3.14, :pie, "Apple"]
+iex> [3.14, :okgoogle, "AppleStore", true, 2]
+[3.14, :okgoogle, "AppleStore", true, 2]
 ```
 
 Elixir implementa listas como listas encadeadas. Isso significa que acessar a profundidade da lista é uma operação O(n). Por essa razão, é normalmente mais rápido inserir um elemento no início do que no final.
 
 ```elixir
-iex> list = [3.14, :pie, "Apple"]
+iex> lista = [3.14, :pie, "Apple"]
 [3.14, :pie, "Apple"]
-iex> ["π"] ++ list
+iex> ["π"] ++ lista
 ["π", 3.14, :pie, "Apple"]
-iex> list ++ ["Cherry"]
+iex> lista ++ ["Cherry"]
 [3.14, :pie, "Apple", "Cherry"]
 ```
 
-Concatenação de listas
+
+#### Concatenação de listas
 
 A concatenação de listas usa o operador ++/2.
 
@@ -94,7 +93,7 @@ iex> [1, 2] ++ [3, 4, 1]
 [1, 2, 3, 4, 1]
 ```
 
-Subtração de listas
+#### Subtração de listas
 
 O suporte para subtração é provido pelo operador --/2; é seguro subtrair um valor que não existe:
 
@@ -102,34 +101,35 @@ O suporte para subtração é provido pelo operador --/2; é seguro subtrair um 
 iex> ["foo", :bar, 42] -- [42, "bar"]
 ["foo", :bar]
 ```
-Topo / Cauda
 
-Quando usamos listas é comum trabalhar com o topo e o fim da lista. O topo é o primeiro elemento da lista e a cauda são os elementos restantes. Elixir provê funções úteis, hd e tl, para trabalhar com essas partes:
 
-```elixir
-iex> hd [3.14, :pie, "Apple"]
-3.14
-iex> tl [3.14, :pie, "Apple"]
-[:pie, "Apple"]
-```
-
-Além das funções citadas, pode-se usar pattern matching e o operador cons | para dividir a lista em topo e cauda; veremos este padrão em futuras lições:
+Existem diversas funções para trabalhar com listas, você deve consultar  a  documentação  oficial  a  cada  atualização  da  linguagem para ficar por dentro de todas as novidades. :smile:
 
 ```elixir
-iex> [head | tail] = [3.14, :pie, "Apple"]
-[3.14, :pie, "Apple"]
-iex> head
-3.14
-iex> tail
-[:pie, "Apple"]
+iex> lista = [1,2,3]
+[1,2,3]
+iex> hd lista #acessando o head
+1
+iex> List.first lista #buscando a primeira posicao da lista
+1
+iex> newLista = List.insert_at lista, 3, 4 #inserindo o valor 4 na posição 3 da lista, salvando em uma nova lista
+[1,2,3,4]
+iex> newLista ++ lista #concatenando as duas listas
+[1,2,3,4,1,2,3]
 ```
 
 
 ### 2.2 Tuplas
 
-### 2.3 Palavras-chave
+As tuplas são similares as listas porém são armazenadas de maneira contígua em memória. Isto permite acessar a sua profundidade de forma rápida porém sua modificação é custosa. A nova tupla deve ser armazenada inteira na memória. As tuplas são definidas com chaves.
 
-### 2.4 Maps
+```elixir
+iex> {3.14, :okgoogle, "AppleStore", true, 2}
+{3.14, :okgoogle, "AppleStore", true, 2}
+```
+
+
+### 2.3 Maps
 
 
 ## 3 Funções
