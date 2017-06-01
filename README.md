@@ -198,7 +198,7 @@ iex> map.hello
 ```
 
 
-## Patthern Matching
+## 3 Patthern Matching
 
 Em Elixir, o operador `=` é na verdade o nosso operador match, comparável ao sinal de igualdade da matemática. Quando usado, a expressão inteira se torna uma equação e faz com que Elixir combine os valores do lado esquerdo com os valores do lado direito da expressão. Se a comparação for bem sucedida, o valor da equação é retornado. Se não, um erro é lançado. Vejamos a seguir:
 
@@ -234,6 +234,7 @@ iex> value
 iex> {:ok, value} = {:error}
 ** (MatchError) no match of right hand side value: {:error}
 
+
 # Situação-problema
 iex> {:moto, modelo} = {:moto, "Suzuky"}
 {:moto, "Suzuky"}
@@ -250,18 +251,22 @@ iex> {_, numero} = {"bla bla bla", 404}
 {"bla bla bla", 404}
 iex> numero
 404
+iex> {_,_,_,x} = {1,2,3,4}
+{1,2,3,4}
+iex> numero
+4
 ```
 
 
-## 3 Funções
-### 3.1 Nomeadas
+## 4 Funções
+### 4.1 Nomeadas
 
-### 3.2 Privadas
+### 4.2 Privadas
 
-### 3.3 Anônimas
+### 4.3 Anônimas
 
 
-## 4 Modulo
+## 5 Modulo
 
 Os módulos são a melhor maneira de organizar as funções em um namespace. Além de agrupar funções, eles permitem definir funções nomeadas e privadas que cobrimos nas lições passadas. Para isso, basta utilizar a palavra reservada defmodule seguida do nome do módulo, por exemplo, defmodule Multiplicacao.
 
@@ -282,7 +287,7 @@ iex> Multiplicacao.multiplique 5, 4
 
 
 
-## 5 Structs
+## 6 Structs
 
 Structs são mapas especiais com um conjunto definido de chaves e valores padrões. Ele deve ser definido dentro de um módulo, no qual leva o nome dele. É comum para um struct ser a única coisa definido dentro de um módulo.
 
@@ -324,15 +329,15 @@ Mais importante, você pode associar estruturas contra mapas:
 iex> %{name: "Sean"} = sean
 %Example.User{name: "Sean", roles: [:admin, :owner]}
 ```
-## 6 Operador pipe
+## 7 Operador pipe
 
-## 7Composição
+## 8Composição
  * alias
  * import
  * require
  * use
 
-## 8 Recursividade
+## 9 Recursividade
 
 
-## 9 Mix
+## 0 Mix
