@@ -253,7 +253,7 @@ iex> numero
 404
 iex> {_,_,_,x} = {1,2,3,4}
 {1,2,3,4}
-iex> numero
+iex> x
 4
 ```
 
