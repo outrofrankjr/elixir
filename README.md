@@ -30,15 +30,18 @@ Para iniciar, executamos `iex`:
 ## 1.3 Aridade de funções
 
 Aridade em linguagem funcionais corresponde ao número de argumentos que uma determinada função recebe.
+No próprio terminal, voce pode consultar o `IEx.Helpers` (O módulo interativo de ajuda com o Elixir) que oferece auxílios durante o desenvolvimento e torna o terminal do Elixir mais prazeroso para o trabalho :smile:
 
-* `b/1           - Imprime callbacks de informações e documentos para um determinado módulo`
-* `c/1           - Compila um arquivo no diretório atual`
-* `c/2           - Compila um arquivo para o caminho dado`
-* `cd/1          - Altera um diretório atual`
-* `clear/0       - Limpa o terminal`
-* `flush/0       - Apagar todas as mensagens enviadas ao shell`
-* `h/0           - Imprime a interação com a ajuda`
-* `h/1           - Imprime ajuda para o módulo, função ou macro fornecidos`
+Então, após execultar o comando `iex` digite um simples `h`:
+
+* `b/1           - prints callbacks info and docs for a given module`
+* `c/1           - compiles a file into the current directory`
+* `c/2           - compiles a file to the given path`
+* `cd/1          - changes the current directory`
+* `clear/0       - clears the screen`
+* `flush/0       - flushes all messages sent to the shell`
+* `h/0           - prints this help message`
+* `h/1           - prints help for the given module, function or macro`
 * `i/1           - prints information about the data type of any given term`
 * `import_file/1 - evaluates the given file in the shell's context`
 * `l/1           - loads the given module's BEAM code`
@@ -60,7 +63,7 @@ Aridade em linguagem funcionais corresponde ao número de argumentos que uma det
 ## 2 Coleções
 ### 2.1 Listas
 
-Listas  são  um  tipo  de  coleção  de  elementos  e  podem conter diversos outros tipos dentro dela. Por exemplo, podemos ter listas de números com atoms.
+Listas  são  um  tipo  de  coleção  de  elementos  e  podem conter diversos outros tipos dentro dela. Uma lista pode conter valores númericos, Strings e booleans, por exemplo.
 
 Listas  não  devem  ser  comparadas  com  arrays  de  outras linguagens,  porque  não  o  são.  Na  verdade,  o  conceito  aqui  é  que listas podem ter head (cabeça) e tail (cauda). A cabeça contém o  valor  e  a  cauda  por  si  mesma  é  a  lista  inteira.  Por  causa  dessa implementação, elas podem ser percorridas facilmente.
 
