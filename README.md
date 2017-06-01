@@ -25,3 +25,34 @@ Elixir vem com IEx, um console interativo, que nos permite avaliar expressões e
 Para iniciar, executamos `iex`:
 
 ![alt text](https://github.com/outrofrankjr/elixir/blob/master/img/modointerativo.png "Modo interativo do Elixir")
+
+## Aridade de funções
+
+## Coleções
+### Listas
+
+### Tuplas
+
+### Palavras-chave
+
+### Maps
+
+
+## Funções
+### Nomeadas
+
+### Privadas
+
+### Anônimas
+
+
+## Modulo
+
+
+## Lazy Evaluation
+
+
+## Structs
+
+
+## Recursividade
