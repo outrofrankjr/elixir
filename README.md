@@ -118,6 +118,8 @@ iex> newLista ++ lista #concatenando as duas listas
 [1,2,3,4,1,2,3]
 ```
 
+#### 6 Lazy Evaluation
+
 
 ### 2.2 Tuplas
 
@@ -145,6 +147,94 @@ iex> put_elem tupla, 0, 3 #atualizando o valor do indice zero
 ```
 
 ### 2.3 Maps
+Mapas são uma coleção de chave/valor e são similares a tuplas, exceto  quando adicionamos um sinal  de  % (porcentagem)  na frente das chaves.
+
+```elixir
+iex> map = %{:foo => "bar", "hello" => :world}
+%{:foo => "bar", "hello" => :world}
+iex> map[:foo]
+"bar"
+iex> map["hello"]
+:world
+```
+
+Em Elixir 1.2, variáveis são permitidas como chaves do mapa:
+
+```elixir
+iex> key = "hello"
+"hello"
+iex> %{key => "world"}
+%{"hello" => "world"}
+```
+
+Se um elemento duplicado é inserido no mapa, este sobrescreverá o valor anterior;
+
+```elixir
+iex> %{:foo => "bar", :foo => "hello world"}
+%{foo: "hello world"}
+```
+
+Como podemos ver na saída anterior, há uma sintaxe especial para os mapas que contem átomos como chaves:
+
+```elixir
+iex> %{foo: "bar", hello: "world"}
+%{foo: "bar", hello: "world"}
+```
+
+```elixir
+iex> %{foo: "bar", hello: "world"} == %{:foo => "bar", :hello => "world"}
+true
+```
+
+
+Outra propriedade interessante de mapas é que eles têm sua própria sintaxe para atualizar e acessar átomos como chaves:
+```elixir
+iex> map = %{foo: "bar", hello: "world"}
+%{foo: "bar", hello: "world"}
+iex> %{map | foo: "baz"}
+%{foo: "baz", hello: "world"}
+iex> map.hello
+"world"
+```
+
+
+## Patthern Matching
+
+Em Elixir, o operador `=` é na verdade o nosso operador match, comparável ao sinal de igualdade da matemática. Quando usado, a expressão inteira se torna uma equação e faz com que Elixir combine os valores do lado esquerdo com os valores do lado direito da expressão. Se a comparação for bem sucedida, o valor da equação é retornado. Se não, um erro é lançado. Vejamos a seguir:
+
+```elixir
+iex> x = 5
+5
+```
+Agora vamos tentar a simples correspondência:
+
+```elixir
+iex> 5 = x
+5
+iex> 2 = x
+** (MatchError) no match of right hand side value: 5
+```
+
+Vamos tentar isso com algumas das coleções que nós conhecemos:
+
+```elixir
+# Listas
+iex> list = [1, 2, 3]
+iex> [1, 2, 3] = list
+[1, 2, 3]
+iex> [] = list
+** (MatchError) no match of right hand side value: [1, 2, 3]
+
+
+# Tuplas
+iex> {:ok, value} = {:ok, "Successful!"}
+{:ok, "Successful!"}
+iex> value
+"Successful!"
+iex> {:ok, value} = {:error}
+** (MatchError) no match of right hand side value: {:error}
+```
+
 
 
 ## 3 Funções
@@ -156,6 +246,24 @@ iex> put_elem tupla, 0, 3 #atualizando o valor do indice zero
 
 
 ## 4 Modulo
+
+Os módulos são a melhor maneira de organizar as funções em um namespace. Além de agrupar funções, eles permitem definir funções nomeadas e privadas que cobrimos nas lições passadas. Para isso, basta utilizar a palavra reservada defmodule seguida do nome do módulo, por exemplo, defmodule Multiplicacao.
+
+No código de exemplo, você cria um módulo com uma função dentro dele que multiplica seus argumentos. Para criar uma função, basta usarmos a palavra reserva  def, seguida do nome da função e seus argumentos.
+
+```elixir
+defmodule Multiplicacao do
+  def multiplique(a, b) do
+    a * b
+  end
+end
+
+iex> Multiplicacao.multiplique 2, 6
+12
+iex> Multiplicacao.multiplique 5, 4
+20
+```
+
 
 
 ## 5 Structs
@@ -201,8 +309,6 @@ iex> %{name: "Sean"} = sean
 %Example.User{name: "Sean", roles: [:admin, :owner]}
 ```
 
-
-## 6 Lazy Evaluation
 
 
 ## 7 Recursividade
