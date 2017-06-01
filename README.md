@@ -1,4 +1,4 @@
-#Elixir
+#E lixir
 
 ## Primeiros Passos
 
@@ -24,4 +24,4 @@ As instruções de instalação para os demais sistema operacional poderá ser e
 Elixir vem com IEx, um console interativo, que nos permite avaliar expressões em Elixir.
 Para iniciar, executamos `iex`:
 
-![alt text](https://github.com/outrofrankjr/elixir/img/modointerativo.png "Modo interativo do Elixir")
+![alt text](https://github.com/outrofrankjr/elixir/blob/master/img/modointerativo.png "Modo interativo do Elixir")
