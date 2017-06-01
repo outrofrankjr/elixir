@@ -103,7 +103,7 @@ iex> ["foo", :bar, 42] -- [42, "bar"]
 ```
 
 
-Existem diversas funções para trabalhar com listas, você deve consultar  a  documentação  oficial  a  cada  atualização  da  linguagem para ficar por dentro de todas as novidades. :smile:
+Existem diversas funções para trabalhar com listas, você deve consultar  a  [documentação  oficial](https://elixir-lang.org/docs.html)  a  cada  atualização  da  linguagem para ficar por dentro de todas as novidades. :smile:
 
 ```elixir
 iex> lista = [1,2,3]
@@ -128,6 +128,21 @@ iex> {3.14, :okgoogle, "AppleStore", true, 2}
 {3.14, :okgoogle, "AppleStore", true, 2}
 ```
 
+
+Existem diversas funções para trabalhar com tuplas, você deve consultar  a  [documentação  oficial](https://elixir-lang.org/docs.html)  a  cada  atualização  da  linguagem para ficar por dentro de todas as novidades. :smile:
+
+```elixir
+iex> tupla = {3.14, :okgoogle, "AppleStore", true, 2}
+{3.14, :okgoogle, "AppleStore", true, 2}
+iex> tuple_size tupla #verificando o tamanho da tupla
+5
+iex> elem tupla, 2 #acessando o elemento no indice 2
+"AppleStore"
+iex> elem tupla, 4 #acessando o elemento no indice 4
+2
+iex> put_elem tupla, 0, 3 #atualizando o valor do indice zero
+{3, :okgoogle, "AppleStore", true, 2}
+```
 
 ### 2.3 Maps
 
