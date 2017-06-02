@@ -373,3 +373,5 @@ iex> %{name: "Sean"} = sean
 
 
 ## 0 Mix
+#Segue esse tutorial aqui:
+http://fellipeguimaraes.com.br/instalando-configurando-github-linux-linux/
