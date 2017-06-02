@@ -286,9 +286,7 @@ iex> Multiplicacao.multiplique 5, 4
 ```
 
 
-### 5.1
-
-Compilação
+### 5.1 Compilação
 
 Na maioria das vezes é conveniente escrever módulos em arquivos para que eles possam ser compilados e reutilizados. Vamos supor que temos um arquivo multiplicacao.ex com o seguinte conteúdo:
 
