@@ -286,6 +286,40 @@ iex> Multiplicacao.multiplique 5, 4
 ```
 
 
+### 5.1
+
+Compilação
+
+Na maioria das vezes é conveniente escrever módulos em arquivos para que eles possam ser compilados e reutilizados. Vamos supor que temos um arquivo multiplicacao.ex com o seguinte conteúdo:
+
+```elixir
+defmodule Multiplicacao do
+  def multiplique(a, b) do
+    a * b
+  end
+end
+```
+
+Este arquivo pode ser compilado usando elixirc:
+
+```elixir
+$ elixirc multiplicacao.ex
+```
+
+Isso gerará um arquivo chamado Elixir.Math.beam contendo o bytecode para o módulo definido. Se iexcomeçarmos novamente, a definição do nosso módulo estará disponível (desde que iexseja iniciado no mesmo diretório em que o arquivo bytecode esteja):
+
+```elixir
+iex> Multiplicacao.multiplique(1, 3)
+3
+```
+
+Os projetos Elixir geralmente são organizados em três diretórios:
+
+* `ebin - contains the compiled bytecode`
+* `lib - contains elixir code (usually .ex files)`
+* `test - contains tests (usually .exs files)`
+
+Ao mixtrabalhar em projetos reais, a ferramenta de construção chamada será responsável por compilar e configurar os caminhos adequados para você. Para fins de aprendizagem, Elixir também oferece suporte a um modo de script que é mais flexível e não gera nenhum artefato compilado.
 
 ## 6 Structs
 
