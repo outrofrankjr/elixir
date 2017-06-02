@@ -315,9 +315,9 @@ iex> Multiplicacao.multiplique(1, 3)
 
 Os projetos Elixir geralmente são organizados em três diretórios:
 
-* `ebin - contains the compiled bytecode`
-* `lib - contains elixir code (usually .ex files)`
-* `test - contains tests (usually .exs files)`
+* `ebin - contém o bytecode compilado`
+* `lib - contém elixir code contém o codigo elixir (geralmente arquivos .ex)`
+* `test - contém os testes (geralmente arquivos .exs)`
 
 Ao mixtrabalhar em projetos reais, a ferramenta de construção chamada será responsável por compilar e configurar os caminhos adequados para você. Para fins de aprendizagem, Elixir também oferece suporte a um modo de script que é mais flexível e não gera nenhum artefato compilado.
 
