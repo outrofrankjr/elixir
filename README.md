@@ -381,10 +381,10 @@ Vamos aos exemplos. O primeiro segue sem a ultilização e em seguida o mesmo co
 
 ```elixir
 iex> Enum.join(Enum.map(String.split("olá, sr mundo!", " "), &String.capitalize/1), " ")
-
-
+"Olá, Sr Mundo!"
 
 iex> "olá, sr mundo" |> String.split(" ") |> Enum.map(&String.capitalize/1) |> Enum.join
+"Olá,SrMundo"
 ```
 
 
