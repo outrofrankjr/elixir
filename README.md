@@ -277,7 +277,7 @@ iex(2)> Media.notas(8,9,7,6)
 7.5
 ```
 
-Se tentarmos definir a função fora de um modulo será gerado um erro, como veremos aseguir:
+Se tentarmos definir a função fora de um modulo será gerado um erro, como veremos a seguir:
 
 ```elixir
 iex(3)>   def notas(n1,n2,n3,n4) do
@@ -291,7 +291,7 @@ iex(3)>   def notas(n1,n2,n3,n4) do
 iex(3)>
 ```
 
-Podemos reduzir o corpo da nossa função ainda mais com do: :
+Podemos reduzir o corpo da nossa função ainda mais com `do:`:
 
 ```elixir
 iex(1)> defmodule Media do
@@ -308,7 +308,7 @@ defmodule Contador do
 end
 ```
 
-Podemos reutizar funções definidas dentro de modulos em outros modulos:
+Podemos reutizar funções definidas dentro de modulos em outros modulos, isso é útil na construção de blocos em elixir:
 
 ```elixir
 iex(1)> defmodule Media do
@@ -320,7 +320,7 @@ iex(2)> Media.notas 8,8,8,8
 8.0
 iex(3)>
 ```
-Se perceber não foi preciso colocar os parênteses para chamar a função. Se fizermos a mesma coisa em funções anonimas vai da erro.
+Observe não foi preciso colocar os parênteses para chamar a função.
 
 ### 4.2 Privadas
 
