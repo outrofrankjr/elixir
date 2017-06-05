@@ -404,7 +404,7 @@ iex(9)>
 ```
 
 ## Guards
-Aplicaremos os guards em funções nomeadas. 
+ 
 
 ## 5 Modulo
 
