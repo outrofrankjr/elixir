@@ -308,7 +308,7 @@ defmodule Contador do
 end
 ```
 
-Podemos reutizar funções definidas dentro de modulos em outros modulos, isso é útil na construção de blocos em elixir:
+Podemos reutizar funções definidas dentro de modulos em outros modulos, isso é singularmente útil na construção de blocos em elixir:
 
 ```elixir
 iex(1)> defmodule Media do
@@ -323,9 +323,85 @@ iex(3)>
 Observe não foi preciso colocar os parênteses para chamar a função.
 
 ### 4.2 Privadas
+As funções privadas só podem ser chamadas de dentro do módulo no qual foram declaradas. Bem parecido com que acontece em outras linguagens.
+
+No exemplo que irá ser criado, será declarada um função com `defp` em de `def`. significa que se trata de uma função restrita somente para chamadas internas.
+
+```elixir
+defmodule Media do
+  def notas(n1,n2,n3,n4), do: soma(n1,n2,n3,n4)/4
+    defp soma(n1,n2,n3,n4), do: n1 + n2 + n3 + n4         
+end
+
+iex(7)> Media.notas 9,8,9,10
+9.0
+```
+Agora tente executar fora do módulo a função privada `soma`. Observe o resultado:
+
+```elixir
+iex(8)> Media.soma 2,3,4,5  
+** (UndefinedFunctionError) function Media.soma/4 is undefined or private
+    Media.soma(2, 3, 4, 5)
+```
+Como podemos observar é gerado o seguinte erro: A função Media.soma/4 é indefinida ou privada.
 
 ### 4.3 Anônimas
+Como nome já diz, uma função anônima não tem nome. São frequentemente passadas para outras funções.
 
+Em elixir ela é criada da seguinte forma: usando a palavra chave `fn` e `end`, acrescentando os argumentos e um `->` que representa o corpo da função. A função é ligada por meio de `match` a uma variável que servirá para execultá-la futuramente.
+
+```elixir
+iex(1)> soma = fn (a,b) -> a + b end
+#Function<12.118419387/2 in :erl_eval.expr/5>
+iex(2)> soma.(8,10)
+18
+iex(3)> media = fn (a,b) -> soma.(a,b)/2 end
+#Function<12.118419387/2 in :erl_eval.expr/5>
+iex(4)> media.(2,2)
+2.0
+iex(5)>  
+```
+Atente que, ao chamar uma função anônima através de uma variável, usamos um ".()" ponto e parênteses, os mesmos são obrigatórios. Percebe-se a diferença entre funções anônimas e nomeadas.
+
+Se tentar chamar a função sem o ponto ou sem o parêntese, ocorrerá um erro.
+
+```elixir
+iex(5)> soma(8,10)                          
+** (CompileError) iex:5: undefined function soma/2
+
+iex(5)> soma.8,10  
+** (SyntaxError) iex:5: syntax error before: 8
+
+iex(5)> soma. 8,10
+** (SyntaxError) iex:5: syntax error before: 8
+
+iex(5)> soma 8,10
+** (CompileError) iex:5: undefined function soma/2
+
+iex(5)>
+```
+### A & taquigrafia
+Em elixir é muito comum a criação de funções anonimas, por isso que desenvolvedores resolveram criar um atalho para elas. Para usar o atalho, basta utilizar o `&` seguindo de parênteses com o o corpo da função. Os argumentos são nomeados a seguinte forma: &1, &2, ... &n.
+
+```elixir
+iex(1)> soma = &(&1 + &2)
+&:erlang.+/2
+iex(2)> soma.(8,5)
+13
+iex(3)> media = &((&1+&2)/2)
+#Function<12.118419387/2 in :erl_eval.expr/5>
+iex(4)> media.(2,2)
+2.0
+iex(5)> media.(8,8)
+8.0
+iex(6)> mutilica_e_soma = &(&1 * &2 + &3)
+#Function<18.118419387/3 in :erl_eval.expr/5>
+iex(7)> multiplica_e_soma = &(&1 * &2 + &3)
+#Function<18.118419387/3 in :erl_eval.expr/5>
+iex(8)> multiplica_e_soma.(2,5,10)         
+20
+iex(9)>
+``` 
 
 ## 5 Modulo
 
