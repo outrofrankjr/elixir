@@ -5,7 +5,8 @@
 ### 1.1 Instalando Elixir
 
 O curso em questão usará máquinas Ubuntu 14.04.
-para instalar G você deve abrir o terminal e digitar os comandos:
+para instalar você deve abrir o terminal e digitar os comandos:
+
 Adicionando o Erlang Solutions repo:
 `wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb`
 
@@ -345,7 +346,6 @@ iex> Multiplicacao.multiplique 5, 4
 20
 ```
 
-
 ### 5.1 Compilação
 
 Na maioria das vezes é conveniente escrever módulos em arquivos para que eles possam ser compilados e reutilizados. Vamos supor que temos um arquivo multiplicacao.ex com o seguinte conteúdo:
@@ -422,8 +422,44 @@ iex> %{name: "Sean"} = sean
 %Example.User{name: "Sean", roles: [:admin, :owner]}
 ```
 ## 7 Operador pipe
+O operador pipe |> é um grande auxiliador na hora de construir seu código em Elixir. O seu uso é simples de se entender. Ele pega o resultado da expressão da esquerda e aponta para o primeiro argumento da função a sua direita e assim segue.O objetivo é destacar os dados que estão sendo transformados por uma série de funções, e você pode tornar o seu código limpo.
 
-## 8Composição
+```elixir
+foo(bar(baz(new_function(other_function()))))
+```
+
+Aqui, nós estamos passando o valor other_function/1 para new_function/1, e new_function/1 para baz/1, baz/1 para bar/1, e finalmente o resultado de bar/1 para foo/1.
+
+Aplicando o pipe
+
+```elixir
+other_function() |> new_function() |> baz() |> bar() |> foo()
+```
+
+
+Vamos aos exemplos. O primeiro segue sem a ultilização e em seguida o mesmo codigo porém utilizando pipe para as devidas comparações.
+
+```elixir
+iex> Enum.join(Enum.map(String.split("olá, sr mundo!", " "), &String.capitalize/1), " ")
+"Olá, Sr Mundo!"
+
+iex> "olá, sr mundo" |> String.split(" ") |> Enum.map(&String.capitalize/1) |> Enum.join
+"Olá,SrMundo"
+```
+
+
+Digamos que voce queira montar um serviço de vendas de smartphones. E nesse sistema voce precise mapear, descontar, somar e filtrar os aparelhos. Daremos 30% de desconto para cada smartphone e selecionar apenas os que tem valor superior a mil reais e somar o resultado para finalizar a compra.
+
+
+```elixir
+iex> carrinho = [%{smartphone: "Moto G4 Plus", valor: 1099.00}, %{smartphone: "Galaxy S8", valor: 3999.00 }, %{smartphone: "iPhone 7", valor: 4299.99 }, %{smartphone: "Galaxy J7", valor: 897.00 }, %{smartphone: "Xperia XA", valor: 1649.00}]
+
+iex> carrinho |> Enum.map(&(Float.round(&1.valor - &1.valor * 0.3, 2))) |> Enum.filter(&(&1 > 1000.00)) |> Enum.sum
+6963.59
+
+```
+
+## 8 Composição
  * alias
  * import
  * require
