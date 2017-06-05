@@ -401,7 +401,9 @@ iex(7)> multiplica_e_soma = &(&1 * &2 + &3)
 iex(8)> multiplica_e_soma.(2,5,10)         
 20
 iex(9)>
-``` 
+```
+
+##Guards 
 
 ## 5 Modulo
 
