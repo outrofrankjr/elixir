@@ -5,7 +5,7 @@
 ### 1.1 Instalando Elixir
 
 O curso em questão usará máquinas Ubuntu 14.04.
-para instalar Gvocê deve abrir o terminal e digitar os comandos:
+para instalar G você deve abrir o terminal e digitar os comandos:
 Adicionando o Erlang Solutions repo:
 `wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb`
 
@@ -257,9 +257,69 @@ iex> x
 4
 ```
 
-
 ## 4 Funções
+Em linguagens funcionais como o **elixir** as funções são cidadãos de primeira classe.
+
+Funções podem ser criadas dentro de um modulo, utilizando a paralavra def em seguida o nome da função e seus argumentos. Também podem ser criadas sem argumentos e, até mesmo sem nomes.
+Aprenderemos a seguir qual a diferença, como usar funções e tipos de funções em elixir.  
+
 ### 4.1 Nomeadas
+Funções nomeadas são criadas dentro de um modulo, utilizando a palavra `def`  em seguida o nome da função e seus argumentos. Podemos definir esse tipo de função para mencionar a elas futuramente.
+
+```elixir
+iex(1)> defmodule Media do
+...(1)>   def notas(n1,n2,n3,n4) do
+...(1)>      (n1+n2+n3+n4)/4
+...(1)> end
+...(1)> end
+iex(2)> Media.notas(8,9,7,6)
+7.5
+```
+
+Se tentarmos definir a função fora de um modulo será gerado um erro, como veremos aseguir:
+
+```elixir
+iex(3)>   def notas(n1,n2,n3,n4) do
+...(3)>      (n1+n2+n3+n4)/4             
+...(3)> end
+** (ArgumentError) cannot invoke def/2 outside module
+    (elixir) lib/kernel.ex:4436: Kernel.assert_module_scope/3
+    (elixir) lib/kernel.ex:3433: Kernel.define/4
+    (elixir) expanding macro: Kernel.def/2
+             iex:3: (file)
+iex(3)>
+```
+
+Podemos reduzir o corpo da nossa função ainda mais com do: :
+
+```elixir
+iex(1)> defmodule Media do
+...(1)>   def notas(n1,n2,n3,n4), do: (n1+n2+n3+n4)/4
+...(1)> end
+```
+
+Podemos explorar ainda mais recursos de funções nomeadas, usando nossos conhecimentos sobre `patthern matching`.
+
+```elixir
+defmodule Contador do
+    def contar([]), do: 0
+    def contar([ _ | tail]), do: 1 + contar(tail)
+end
+```
+
+Podemos reutizar funções definidas dentro de modulos em outros modulos:
+
+```elixir
+iex(1)> defmodule Media do
+...(1)>   def notas(n1,n2,n3,n4) do
+...(1)>      (n1+n2+n3+n4)/Contador.contar [n1,n2,n3,n4]
+...(1)> end
+...(1)> end
+iex(2)> Media.notas 8,8,8,8
+8.0
+iex(3)>
+```
+Se perceber não foi preciso colocar os parênteses para chamar a função. Se fizermos a mesma coisa em funções anonimas vai da erro.
 
 ### 4.2 Privadas
 
