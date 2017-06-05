@@ -403,7 +403,8 @@ iex(8)> multiplica_e_soma.(2,5,10)
 iex(9)>
 ```
 
-## Guards 
+## Guards
+Aplicaremos os guards em funções nomeadas. 
 
 ## 5 Modulo
 
